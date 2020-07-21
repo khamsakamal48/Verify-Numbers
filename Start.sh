@@ -18,6 +18,15 @@ echo ""
 read -r -p "Have you correctly entered the data in the CSV files? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
+        #Housekeeping
+        rm -rf *.json;
+        rm -rf API_Keys_Used.csv;
+        rm -rf Phone_Number_Completed.csv;
+        rm -rf Phone_Number_New.csv;
+
+        touch Phone_Number_Completed.csv;
+        touch API_Key_New.csv;
+
         #Count the no. of APIs
         api_count=(cat API_Keys.csv | wc -l)
 
@@ -33,7 +42,7 @@ case "$response" in
         else
           echo "API Keys are not sufficient"
           echo "Visit https://numverify.com and create a new account to get more API Keys."
-          echo "Once you generate API Keys, add them in the ."
+          echo "Once you generate API Keys, add them in the 'API_Keys.csv' file."
         fi
         ;;
     *)
