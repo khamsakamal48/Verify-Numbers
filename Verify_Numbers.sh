@@ -30,7 +30,8 @@ case $error_status in
     code=$(jq -r '.error | .code' Number_Verify_Output.json)
     type=$(jq -r '.error | .type' Number_Verify_Output.json)
 		info=$(jq -r '.error | .info' Number_Verify_Output.json)
-    echo "$code,$type,$info" >> Phone_List_Final.csv;
+    number_orig=$(jq -r '.number' Phone.json)
+    echo "$number_orig,$code,$type,$info" >> Phone_List_Final.csv;
     ;;
 
   *)
@@ -44,7 +45,8 @@ case $error_status in
 		location=$(jq -r '.location' Number_Verify_Output.json)
     carrier=$(jq -r '.carrier' Number_Verify_Output.json)
 		line_type=$(jq -r '.line_type' Number_Verify_Output.json)
-    echo "$valid,$number,$local_format,$international_format,$country_prefix,$country_code,$country_name,$location,$carrier,$line_type" >> Phone_List_Final.csv;
+    number_orig=$(jq -r '.number' Phone.json)
+    echo "$number_orig,$valid,$number,$local_format,$international_format,$country_prefix,$country_code,$country_name,$location,$carrier,$line_type" >> Phone_List_Final.csv;
     ;;
 
 esac
