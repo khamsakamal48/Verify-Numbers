@@ -13,7 +13,7 @@ number=$(jq -r '.number' Phone.json)
 access_key=$(jq -r '.access_key' API.json)
 
 #Verify
-curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}" 2>&1 | tee Number_Verify_Output.json;
+curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}&country_code=IN" 2>&1 | tee Number_Verify_Output.json;
 
 #Check Log
 error_status=$(jq -r '.error' Number_Verify_Output.json)
