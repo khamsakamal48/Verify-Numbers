@@ -9,11 +9,17 @@
 cd "$(dirname "$0")";
 
 #Get phone number and API Key
-number=$(jq -r '.number' Phone.json)
+number=$(jq -r '.number' Phone.json | tr -d ' ' | tr -d '-' | tr -d '+' | tr -d '('| tr -d ')')
+number_length=$(echo "${#number}")
 access_key=$(jq -r '.access_key' API.json)
 
-#Verify
-curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}&country_code=IN" 2>&1 | tee Number_Verify_Output.json;
+#Verify based on the length of mobile number
+if [[ "$number_length" -ge 10 ]]; then
+  #Mobile No. is of 10 digits.
+  curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}" 2>&1 | tee Number_Verify_Output.json;
+else
+  curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}&country_code=IN" 2>&1 | tee Number_Verify_Output.json;
+fi
 
 #Check Log
 error_status=$(jq -r '.error' Number_Verify_Output.json)
