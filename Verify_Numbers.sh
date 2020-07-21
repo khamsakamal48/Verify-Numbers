@@ -14,11 +14,11 @@ number_length=$(echo "${#number}")
 access_key=$(jq -r '.access_key' API.json)
 
 #Verify based on the length of mobile number
-if [[ "$number_length" -ge 10 ]]; then
+if [[ "$number_length" == 10 ]]; then
   #Mobile No. is of 10 digits.
   curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}" 2>&1 | tee Number_Verify_Output.json;
 else
-  #Mobile No. is less than 10 digits.
+  #Mobile No. is not of 10 digits.
   curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}&country_code=IN" 2>&1 | tee Number_Verify_Output.json;
 fi
 
