@@ -28,10 +28,10 @@ case "$response" in
         touch API_Key_New.csv;
 
         #Count the no. of APIs
-        api_count=(cat API_Keys.csv | wc -l)
+        api_count=$(cat API_Keys.csv | wc -l)
 
         #Count the phone numbers to process
-        phone_count=(cat Phone_Number_List.csv | wc -l)
+        phone_count=$(cat Phone_Number_List.csv | wc -l)
 
         #Check whether API Keys are sufficient for all the phone numbers
         api_required=$((phone_count / 250))
