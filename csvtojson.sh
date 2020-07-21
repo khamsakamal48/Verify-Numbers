@@ -58,7 +58,7 @@ else
   d=$((c / 250))
 
   #If d is an integer, then delete the last API key in the CSV. If float, use the same API key
-  if [[ $d =~ ^[+-]?[0-9]*$ ]]; then
+  if [[ $d =~ ^[+-]?[0-9]*$ ]] && [[ $d != 0 ]] ; then
     echo "API key has been used 250 times";
     echo "Will now use the next API key";
     tail -n 1 API_Keys.csv >> API_Keys_Used.csv;
