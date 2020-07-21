@@ -26,6 +26,7 @@ case "$response" in
 
         touch Phone_Number_Completed.csv;
         touch API_Key_New.csv;
+        touch API_Keys_Used.csv;
 
         #Count the no. of APIs
         api_count=$(cat API_Keys.csv | wc -l)
