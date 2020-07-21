@@ -12,11 +12,8 @@ cd "$(dirname "$0")";
 number=$(jq -r '.number' Phone.json)
 access_key=$(jq -r '.access_key' API.json)
 
-#Prepare JSON File
-jq -n --arg number "$number" --arg access_key "$access_key" '{ "number": $number, "access_key": $access_key }' > Number_Verify.json
-
 #Verify
-curl -s --header "Content-Type: application/json" --request GET --data "@Number_Verify.json" http://apilayer.net/api/validate 2>&1 | tee Number_Verify_Output.json;
+curl -s "http://apilayer.net/api/validate?access_key=${access_key}&number=${number}" 2>&1 | tee Number_Verify_Output.json;
 
 #Check Log
 error_status=$(jq -r '.error' Number_Verify_Output.json)
@@ -49,3 +46,6 @@ esac
 tail -n 1 Phone_Number_List.csv >> Phone_Number_Completed.csv;
 #Remove the last line from CSV file
 sed -i '$d' Phone_Number_List.csv;
+
+#Sleep for 10 seconds
+sleep 10;
