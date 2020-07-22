@@ -37,7 +37,7 @@ case "$response" in
         #Check whether API Keys are sufficient for all the phone numbers
         api_required=$((phone_count / 250))
 
-        if [[ $api_count > $api_required ]]; then
+        if [[ "$api_count" -ge "$api_required" ]]; then
           echo "API Keys are sufficient";
           for i in $(seq $phone_count); do ./csvtojson.sh; done
         else
