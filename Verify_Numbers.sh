@@ -55,5 +55,5 @@ tail -n 1 Phone_Number_List.csv >> Phone_Number_Completed.csv;
 #Remove the last line from CSV file
 sed -i '$d' Phone_Number_List.csv;
 
-#Sleep for 10 seconds
-sleep 10;
+#Sleep for 1 second
+sleep 1;

@@ -23,7 +23,7 @@ This program will verify the contact numbers using [Numverify's](https://numveri
   ```
 
 ## Extra information
-The script checks for the verification of available phone numbers every 10 seconds.
+The script checks for the verification of available phone numbers every other second.
 
 It will auto-switch to the next API Key after exhaustion of 250 Free usages. You can support [Numverify](https://numverify.com) by subscribing to their [premium plans](https://numverify.com/plan) to get more quota on usage and tons of features.
 
