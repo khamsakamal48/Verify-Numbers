@@ -55,7 +55,7 @@ else
 
   #Decide which API Key to use
   c=$(cat Phone_Number_Completed.csv | wc -l)
-  d=$((c / 250))
+  d=$(echo $c/250 | jq -nf /dev/stdin)
 
   #If d is an integer, then delete the last API key in the CSV. If float, use the same API key
   if [[ $d =~ ^[+-]?[0-9]*$ ]] && [[ $d != 0 ]] ; then
