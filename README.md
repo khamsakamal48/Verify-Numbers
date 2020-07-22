@@ -16,7 +16,7 @@ This program will verify the contact numbers using [Numverify's](https://numveri
 * Download or Clone the project onto your machine.
 * Enter the Phone Numbers that you want to verify in **Phone_Number_List.csv**.
 * Enter the API access keys that you will be using in **API_Keys.csv**.
-* Open a terminal to the project folder, run below command and follow instructions.
+* Open a terminal to the project folder, run below command and follow instructions. Your final data is saved in **Phone_List_Final.csv**.
 
    ```bash
    ./Start.sh
